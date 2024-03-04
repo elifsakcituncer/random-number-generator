@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Sayı Üret</title>
+</head>
+
+<body>
+    <form id="randomNumberForm">
+        <label for="minRange">Minimum Değer: </label>
+        <input type="range" id="minRange" name="minRange" min="0" max="100">
+        <button onclick="secClick('minRange', 'sayi1')">Seç</button>
+        <input type="text" id="sayi1" name="sayi1">
+        <br><br>
+        <label for="maxRange">Maksimum Değer: </label>
+        <input type="range" id="maxRange" name="maxRange" min="0" max="100">
+        <button onclick="secClick('maxRange', 'sayi2')">Seç</button>
+        <input type="text" id="sayi2" name="sayi2">
+        <br><br>
+        <button type="button" onclick="generateRandomNumber()">Rastgele Sayı Üret</button>
+    </form>
+    <br>
+    <label id="randomNumberLabel"></label>
+
+    <script>
+
+        function secClick(inputId, outputId) {
+            const selectedValue = document.getElementById(inputId).value;
+            document.getElementById(outputId).value = selectedValue;
+        }
+
+        function generateRandomNumber() {
+            const minRange = parseInt(document.getElementById("minRange").value);
+            const maxRange = parseInt(document.getElementById("maxRange").value);
+
+            // Rastgele sayı üret
+            const randomNumber = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+
+            // Label'da göster
+            document.getElementById("randomNumberLabel").textContent = "Rastgele Sayı: " + randomNumber;
+        }
+
+    </script>
+</body>
+
+</html>
